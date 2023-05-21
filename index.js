@@ -107,6 +107,17 @@ async function run() {
             const options = { upsert: true };
             const data = req.body;
             const updateToy = {
+                $set: {
+                    toy_name: data.toy_name,
+                    seller_name: data.seller_name,
+                    quantity: data.quantity,
+                    price: data.price,
+                    status: data.status,
+                    category: data.category,
+                    photoUrl: data.photoUrl,
+                    deadline: data.deadline
+                },
+            };
 
         app.delete('/myToys/:id', async (req, res) => {
             const id = req.params.id;
