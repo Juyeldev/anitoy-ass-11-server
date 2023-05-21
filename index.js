@@ -101,6 +101,13 @@ async function run() {
             res.send(result);
         })
 
+        app.put("/postToy/:id", async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+            const data = req.body;
+            const updateToy = {
+
         app.delete('/myToys/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
