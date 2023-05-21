@@ -85,6 +85,10 @@ async function run() {
             }).toArray();
             res.send(result);
         });
+        app.get('/myToys/:email', async (req, res) => {
+            const result = await toyCollection.find({ postedBy: req.params.email }).toArray();
+            res.send(result);
+        })
 
         app.delete('/myToys/:id', async (req, res) => {
             const id = req.params.id;
