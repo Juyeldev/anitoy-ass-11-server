@@ -75,7 +75,16 @@ async function run() {
             const result = await toyCollection.find({}).toArray();
             res.send(result);
         })
-
+        app.get('/searchToy/:text', async (req, res) => {
+            const searchText = req.params.text;
+            const result = await toyCollection.find({
+                $or: [
+                    { toy_name: { $regex: searchText, $options: "i" } },
+                   
+                ],
+            }).toArray();
+            res.send(result);
+        });
 
         app.delete('/myToys/:id', async (req, res) => {
             const id = req.params.id;
