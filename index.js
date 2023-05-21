@@ -90,6 +90,11 @@ async function run() {
             res.send(result);
         })
 
+        app.get('/myToysA/:email', async (req, res) => {
+            const result = await toyCollection.find({ postedBy: req.params.email }).sort({createdAt: -1}).toArray();
+            res.send(result);
+        })
+
         app.delete('/myToys/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
