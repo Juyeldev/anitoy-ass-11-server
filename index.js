@@ -37,10 +37,10 @@ async function run() {
 
         const toyCollection = client.db("ToysDB").collection('ToysCollection')
 
-        // const indexKeys = { toy_name: 1};
-        // const indexOptions = { name: "toy_name" };
-        // const result = await toyCollection.createIndex(indexKeys, indexOptions);
-        // console.log(result);
+        const indexKeys = { toy_name: 1};
+        const indexOptions = { name: "toy_name" };
+        const result = await toyCollection.createIndex(indexKeys, indexOptions);
+        console.log(result);
 
 
         app.post('/postToy', async (req, res) => {
