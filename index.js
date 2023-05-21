@@ -118,6 +118,9 @@ async function run() {
                     deadline: data.deadline
                 },
             };
+            const result = await toyCollection.updateOne(filter, updateToy, options);
+            res.send(result);
+        })
 
         app.delete('/myToys/:id', async (req, res) => {
             const id = req.params.id;
